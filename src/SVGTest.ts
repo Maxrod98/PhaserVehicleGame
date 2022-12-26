@@ -2,6 +2,7 @@ import 'phaser';
 import { Updatable } from './Updatable';
 import "../dist/assets/pathseg";
 
+// Inspiration: https://itnext.io/modular-game-worlds-in-phaser-3-tilemaps-5-matter-physics-platformer-d14d1f614557
 // Source: https://codepen.io/garethfoote/pen/wzYzNL
 
 export class SVGTest implements Updatable {
@@ -11,16 +12,10 @@ export class SVGTest implements Updatable {
     {
         var MatterJSRef = scene.matter;
         this.scene = scene;
-
-         /*
-        var Common = Matter.Common,
-            Bodies = Matter.Bodies;
         
-
         var vertexSets = [],
-        color = Common.choose(['#556270', '#4ECDC4', '#C7F464', '#FF6B6B', '#C44D58']);
-        
-       
+        color = '#556270';
+       /*
         $('#svg').find('path').each(function(i, path){
             // vertexSets.push(Svg.pathToVertices(path, 100));
             var v = Bodies.fromVertices(100+(i*80), 80, Svg.pathToVertices(path, 20), {
@@ -33,8 +28,8 @@ export class SVGTest implements Updatable {
             vertexSets.push(v);
             // World.add(engine.world, v);
         });
-        vertexSets.push(ground);
         */
+        
     }
     // implements
     update(time : number, delta : number){ 
