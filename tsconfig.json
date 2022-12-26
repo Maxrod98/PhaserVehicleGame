@@ -1,9 +1,10 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "allowJs": true
     },
     "include": [
         "./src/**/*"
-    ]
+, "dist/assets/pathseg.js"    ]
 }

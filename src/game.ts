@@ -1,5 +1,6 @@
 import 'phaser';
 import { SceneA } from './SceneA';
+import { SceneB } from './SceneB';
 
 var config = {
     type: Phaser.AUTO,
@@ -81,7 +82,7 @@ var config = {
             }
         }
     },
-    scene: [new SceneA("test")]
+    scene: [new SceneB("test")]
 };
 
 const game = new Phaser.Game(config);
