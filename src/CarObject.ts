@@ -11,38 +11,50 @@ export class CarObject implements Updatable {
     private axelA: MatterJS.ConstraintType;
     private axelB: MatterJS.ConstraintType;
     private keys: object;
+    private xx: number;
+    private yy: number;
+    private width: number;
+    private height: number;
+    private wheelSize: number;
 
     constructor (scene: Phaser.Scene, xx: number, yy: number, width: number, height: number,  wheelSize: number)
     {
-        var MatterJSRef = scene.matter;
-
         this.scene = scene;
+        this.xx = xx;
+        this.yy = yy;
+        this.width = width;
+        this.height = height;
+        this.wheelSize = wheelSize;
+    }
+
+    create() {
+        var MatterJSRef = this.scene.matter;
         this.car = MatterJSRef.composite.create({ label: 'Car' });
 
         var group = MatterJSRef.body.nextGroup(true),
             wheelBase = 20,
-            wheelAOffset = -width * 0.5 + wheelBase,
-            wheelBOffset = width * 0.5 - wheelBase,
+            wheelAOffset = -this.width * 0.5 + wheelBase,
+            wheelBOffset = this.width * 0.5 - wheelBase,
             wheelYOffset = 0;
 
-        this.body = MatterJSRef.bodies.rectangle(xx, yy, width, height, { 
+        this.body = MatterJSRef.bodies.rectangle(this.xx, this.yy, this.width, this.height, { 
                 collisionFilter: {
                     group: group
                 },
                 chamfer: {
-                    radius: height * 0.5
+                    radius: this.height * 0.5
                 },
                 density: 0.003
             } as MatterJS.IChamferableBodyDefinition);
 
-        this.wheelA = MatterJSRef.bodies.circle(xx + wheelAOffset, yy + wheelYOffset, wheelSize, { 
+        this.wheelA = MatterJSRef.bodies.circle(this.xx + wheelAOffset, this.yy + wheelYOffset, this.wheelSize, { 
             collisionFilter: {
                 group: group
             },
             friction: 0.9
         } as MatterJS.IBodyDefinition);
                     
-        this.wheelB = MatterJSRef.bodies.circle(xx + wheelBOffset, yy + wheelYOffset, wheelSize, { 
+        this.wheelB = MatterJSRef.bodies.circle(this.xx + wheelBOffset, this.yy + wheelYOffset, this.wheelSize, { 
             collisionFilter: {
                 group: group
             },
@@ -72,10 +84,11 @@ export class CarObject implements Updatable {
         MatterJSRef.composite.add(this.car, this.axelA);
         MatterJSRef.composite.add(this.car, this.axelB);
 
-        scene.matter.world.add(this.car);
+        this.scene.matter.world.add(this.car);
 
-        this.keys = scene.input.keyboard.addKeys('D,A');
+        this.keys = this.scene.input.keyboard.addKeys('D,A');
     }
+
     // implements
     update(time : number, delta : number){ 
         let decided = false;

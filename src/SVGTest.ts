@@ -10,29 +10,14 @@ export class SVGTest implements Updatable {
 
     constructor (scene: Phaser.Scene, xx: number, yy: number)
     {
-        var MatterJSRef = scene.matter;
         this.scene = scene;
-        
-        var vertexSets = [],
-        color = '#556270';
-       /*
-        $('#svg').find('path').each(function(i, path){
-            // vertexSets.push(Svg.pathToVertices(path, 100));
-            var v = Bodies.fromVertices(100+(i*80), 80, Svg.pathToVertices(path, 20), {
-                render: {
-                fillStyle: color,
-                strokeStyle: color
-                }
-            }, true);
-            console.log(v)
-            vertexSets.push(v);
-            // World.add(engine.world, v);
-        });
-        */
-        
     }
-    // implements
-    update(time : number, delta : number){ 
-        
+
+    preload() {
+        this.scene.load.xml('drawing', 'assets/drawing.svg');
+    }
+
+    create () {
+        this.scene.matter.add.fromSVG(400, 900, this.scene.cache.xml.get('drawing'), 10, {isStatic: true} as Phaser.Types.Physics.Matter.MatterBodyConfig);
     }
 }

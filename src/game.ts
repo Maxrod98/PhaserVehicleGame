@@ -82,7 +82,7 @@ var config = {
             }
         }
     },
-    scene: [new SceneB("test")]
+    scene: [new SceneA("test")]
 };
 
 const game = new Phaser.Game(config);

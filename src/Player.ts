@@ -9,25 +9,35 @@ export class Player implements Updatable {
     private wheelA: MatterJS.BodyType;
     private keys: object;
 
+    private xx: number;
+    private yy: number;
+
     constructor (scene: Phaser.Scene, xx: number, yy: number)
     {
-        var MatterJSRef = scene.matter;
-
         this.scene = scene;
+        this.xx = xx;
+        this.yy = yy;
+    }
+
+    create() {
+        var MatterJSRef = this.scene.matter;
+
+        this.scene = this.scene;
 
         var group = MatterJSRef.body.nextGroup(true);
 
-        this.wheelA = MatterJSRef.bodies.circle(xx, yy, 50, { 
+        this.wheelA = MatterJSRef.bodies.circle(this.xx, this.yy, 50, { 
             collisionFilter: {
                 group: group
             },
             friction: 0.9,
         } as MatterJS.IBodyDefinition);
 
-        scene.matter.world.add(this.wheelA);
+        this.scene.matter.world.add(this.wheelA);
 
-        this.keys = scene.input.keyboard.addKeys('D,A,W');
+        this.keys = this.scene.input.keyboard.addKeys('D,A,W');
     }
+
     // implements
     update(time : number, delta : number){ 
         var MatterJSRef = this.scene.matter;

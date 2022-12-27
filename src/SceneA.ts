@@ -11,10 +11,6 @@ export class SceneA extends CustomScene {
         super(name);
     }
 
-    preload ()
-    {
-    }
-
     create ()
     {
         this.matter.world.setBounds();
@@ -27,5 +23,7 @@ export class SceneA extends CustomScene {
         this.addUpdatable(this.car2);
 
         this.matter.add.mouseSpring();
+
+        super.create();
     }
 }
