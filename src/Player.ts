@@ -39,7 +39,7 @@ export class Player implements Updatable {
     }
 
     // implements
-    update(time : number, delta : number){ 
+    update(time : number, delta : number){
         var MatterJSRef = this.scene.matter;
         let decided = false;
 
@@ -58,10 +58,10 @@ export class Player implements Updatable {
         if (!decided) {
             Body.setAngularVelocity(this.wheelA,0);
         }
-        
+
+        // We need to find the intersecting points with this body and the corresponding normal vectors.
         let list_pairs = this.scene.matter.world.engine.pairs.list;
         let length_list = list_pairs.length;
-
         let jumpVector: MatterJS.Vector;
         let collides = false;
         for (let i = 0; i < length_list; i++) {
@@ -75,17 +75,13 @@ export class Player implements Updatable {
                     jumpVector.y *= 30;
                     jumpVector.x *= 30;
                     jumpVector.x += this.wheelA.velocity.x;
-                    
+
                     break;
                 }
             }
         }
-        
-        //console.log(num_collisions);
-        //console.log(list_pairs);
 
         if (this.keys['W'].isDown && collides) {
-            //Body.setVelocity(this.wheelA, {x: this.wheelA.velocity.x, y: -50} as MatterJS.Vector);
             Body.setVelocity(this.wheelA, jumpVector);
         }
     }

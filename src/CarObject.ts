@@ -53,14 +53,14 @@ export class CarObject implements Updatable {
             },
             friction: 0.9
         } as MatterJS.IBodyDefinition);
-                    
+
         this.wheelB = MatterJSRef.bodies.circle(this.xx + wheelBOffset, this.yy + wheelYOffset, this.wheelSize, { 
             collisionFilter: {
                 group: group
             },
             friction: 0.9
         } as MatterJS.IBodyDefinition);
-                    
+
         this.axelA = MatterJSRef.constraint.create({
             bodyB: this.body,
             pointB: { x: wheelAOffset, y: wheelYOffset },
@@ -68,7 +68,7 @@ export class CarObject implements Updatable {
             stiffness: 1,
             length: 0
         });
-                        
+
         this.axelB = MatterJSRef.constraint.create({
             bodyB: this.body,
             pointB: { x: wheelBOffset, y: wheelYOffset },
@@ -76,7 +76,6 @@ export class CarObject implements Updatable {
             stiffness: 1,
             length: 0
         });
-    
 
         MatterJSRef.composite.add(this.car, this.body);
         MatterJSRef.composite.add(this.car, this.wheelA);
@@ -90,7 +89,7 @@ export class CarObject implements Updatable {
     }
 
     // implements
-    update(time : number, delta : number){ 
+    update(time : number, delta : number){
         let decided = false;
 
         var Body = this.scene.matter.body;
@@ -109,6 +108,6 @@ export class CarObject implements Updatable {
         if (!decided) {
             Body.setAngularVelocity(this.wheelA,0);
             Body.setAngularVelocity(this.wheelB, 0);
-        }   
+        }
     }
 }

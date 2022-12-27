@@ -5,6 +5,7 @@ import "../dist/assets/pathseg";
 // Inspiration: https://itnext.io/modular-game-worlds-in-phaser-3-tilemaps-5-matter-physics-platformer-d14d1f614557
 // Source: https://codepen.io/garethfoote/pen/wzYzNL
 
+// Must be created on Scene.Preload !
 export class SVGTest implements Updatable {
     private scene: Phaser.Scene;
 

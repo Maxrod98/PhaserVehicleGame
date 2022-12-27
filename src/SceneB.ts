@@ -19,7 +19,7 @@ export class SceneB extends CustomScene {
         this.svgtest = new SVGTest(this, 100, 100);
         this.addUpdatable(this.svgtest);
 
-        super.preload();
+        super.preload(); // must preload after adding objects above
     }
 
     create ()

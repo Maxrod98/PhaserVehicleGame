@@ -1,6 +1,7 @@
 import 'phaser';
 import { CustomScene } from "./CustomScene";
 import { CarObject } from "./CarObject";
+import { Player } from './Player';
 
 export class SceneA extends CustomScene {
     car : CarObject;
@@ -21,6 +22,9 @@ export class SceneA extends CustomScene {
         this.addUpdatable(this.car);
         this.car2 = new CarObject(this, 100, 100, 300, 50, 50);
         this.addUpdatable(this.car2);
+
+        var player = new Player(this, 100, 10);
+        this.addUpdatable(player);
 
         this.matter.add.mouseSpring();
 

@@ -31,7 +31,7 @@ var config = {
 
                 showCollisions: true,
                 collisionColor: 0xf5950c,
-    
+
                 showSeparations: false,
                 separationColor: 0xffa500,
 
@@ -41,13 +41,13 @@ var config = {
 
                 renderFill: false,
                 renderLine: true,
-    
+
                 fillColor: 0x106909,
                 fillOpacity: 1,
                 lineColor: 0x28de19,
                 lineOpacity: 1,
                 lineThickness: 1,
-    
+
                 staticFillColor: 0x0d177b,
                 staticLineColor: 0x1327e4,
 
@@ -55,11 +55,11 @@ var config = {
                 staticBodySleepOpacity: 1,
                 sleepFillColor: 0x464646,
                 sleepLineColor: 0x999a99,
-    
+
                 showSensors: true,
                 sensorFillColor: 0x0d177b,
                 sensorLineColor: 0x1327e4,
-    
+
                 showPositions: true,
                 positionSize: 4,
                 positionColor: 0xe042da,
